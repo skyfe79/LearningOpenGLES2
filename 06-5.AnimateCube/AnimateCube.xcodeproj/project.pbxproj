@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4EF19E5E1C82100900B5DC75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF19E5D1C82100900B5DC75 /* AppDelegate.swift */; };
+		4EF19E601C82100900B5DC75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF19E5F1C82100900B5DC75 /* ViewController.swift */; };
+		4EF19E631C82100900B5DC75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF19E611C82100900B5DC75 /* Main.storyboard */; };
+		4EF19E651C82100900B5DC75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF19E641C82100900B5DC75 /* Assets.xcassets */; };
+		4EF19E681C82100900B5DC75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF19E661C82100900B5DC75 /* LaunchScreen.storyboard */; };
+		4EF19E731C82102A00B5DC75 /* SimpleFragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4EF19E701C82102A00B5DC75 /* SimpleFragmentShader.glsl */; };
+		4EF19E741C82102A00B5DC75 /* SimpleVertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 4EF19E711C82102A00B5DC75 /* SimpleVertexShader.glsl */; };
+		4EF19E751C82102A00B5DC75 /* summary.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EF19E721C82102A00B5DC75 /* summary.txt */; };
+		4EF19E7B1C82103500B5DC75 /* BaseEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF19E761C82103500B5DC75 /* BaseEffect.swift */; };
+		4EF19E7C1C82103500B5DC75 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF19E771C82103500B5DC75 /* Vertex.swift */; };
+		4EF19E7D1C82103500B5DC75 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF19E781C82103500B5DC75 /* Model.swift */; };
+		4EF19E7E1C82103500B5DC75 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF19E791C82103500B5DC75 /* Square.swift */; };
+		4EF19E7F1C82103500B5DC75 /* GLKMatrix+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF19E7A1C82103500B5DC75 /* GLKMatrix+Array.swift */; };
+		4EF19E811C82106900B5DC75 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF19E801C82106900B5DC75 /* Cube.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4EF19E5A1C82100900B5DC75 /* AnimateCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimateCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EF19E5D1C82100900B5DC75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4EF19E5F1C82100900B5DC75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4EF19E621C82100900B5DC75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4EF19E641C82100900B5DC75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4EF19E671C82100900B5DC75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4EF19E691C82100900B5DC75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EF19E701C82102A00B5DC75 /* SimpleFragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragmentShader.glsl; sourceTree = "<group>"; };
+		4EF19E711C82102A00B5DC75 /* SimpleVertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertexShader.glsl; sourceTree = "<group>"; };
+		4EF19E721C82102A00B5DC75 /* summary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = summary.txt; sourceTree = "<group>"; };
+		4EF19E761C82103500B5DC75 /* BaseEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEffect.swift; sourceTree = "<group>"; };
+		4EF19E771C82103500B5DC75 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		4EF19E781C82103500B5DC75 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4EF19E791C82103500B5DC75 /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		4EF19E7A1C82103500B5DC75 /* GLKMatrix+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GLKMatrix+Array.swift"; sourceTree = "<group>"; };
+		4EF19E801C82106900B5DC75 /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4EF19E571C82100900B5DC75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4EF19E511C82100900B5DC75 = {
+			isa = PBXGroup;
+			children = (
+				4EF19E5C1C82100900B5DC75 /* AnimateCube */,
+				4EF19E5B1C82100900B5DC75 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4EF19E5B1C82100900B5DC75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4EF19E5A1C82100900B5DC75 /* AnimateCube.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4EF19E5C1C82100900B5DC75 /* AnimateCube */ = {
+			isa = PBXGroup;
+			children = (
+				4EF19E6F1C82102200B5DC75 /* shader */,
+				4EF19E5D1C82100900B5DC75 /* AppDelegate.swift */,
+				4EF19E5F1C82100900B5DC75 /* ViewController.swift */,
+				4EF19E761C82103500B5DC75 /* BaseEffect.swift */,
+				4EF19E771C82103500B5DC75 /* Vertex.swift */,
+				4EF19E781C82103500B5DC75 /* Model.swift */,
+				4EF19E791C82103500B5DC75 /* Square.swift */,
+				4EF19E801C82106900B5DC75 /* Cube.swift */,
+				4EF19E7A1C82103500B5DC75 /* GLKMatrix+Array.swift */,
+				4EF19E611C82100900B5DC75 /* Main.storyboard */,
+				4EF19E641C82100900B5DC75 /* Assets.xcassets */,
+				4EF19E661C82100900B5DC75 /* LaunchScreen.storyboard */,
+				4EF19E691C82100900B5DC75 /* Info.plist */,
+			);
+			path = AnimateCube;
+			sourceTree = "<group>";
+		};
+		4EF19E6F1C82102200B5DC75 /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				4EF19E701C82102A00B5DC75 /* SimpleFragmentShader.glsl */,
+				4EF19E711C82102A00B5DC75 /* SimpleVertexShader.glsl */,
+				4EF19E721C82102A00B5DC75 /* summary.txt */,
+			);
+			name = shader;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4EF19E591C82100900B5DC75 /* AnimateCube */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EF19E6C1C82100900B5DC75 /* Build configuration list for PBXNativeTarget "AnimateCube" */;
+			buildPhases = (
+				4EF19E561C82100900B5DC75 /* Sources */,
+				4EF19E571C82100900B5DC75 /* Frameworks */,
+				4EF19E581C82100900B5DC75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnimateCube;
+			productName = AnimateCube;
+			productReference = 4EF19E5A1C82100900B5DC75 /* AnimateCube.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4EF19E521C82100900B5DC75 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = BurtK;
+				TargetAttributes = {
+					4EF19E591C82100900B5DC75 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 4EF19E551C82100900B5DC75 /* Build configuration list for PBXProject "AnimateCube" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4EF19E511C82100900B5DC75;
+			productRefGroup = 4EF19E5B1C82100900B5DC75 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4EF19E591C82100900B5DC75 /* AnimateCube */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4EF19E581C82100900B5DC75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EF19E681C82100900B5DC75 /* LaunchScreen.storyboard in Resources */,
+				4EF19E651C82100900B5DC75 /* Assets.xcassets in Resources */,
+				4EF19E741C82102A00B5DC75 /* SimpleVertexShader.glsl in Resources */,
+				4EF19E751C82102A00B5DC75 /* summary.txt in Resources */,
+				4EF19E731C82102A00B5DC75 /* SimpleFragmentShader.glsl in Resources */,
+				4EF19E631C82100900B5DC75 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4EF19E561C82100900B5DC75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EF19E7E1C82103500B5DC75 /* Square.swift in Sources */,
+				4EF19E7F1C82103500B5DC75 /* GLKMatrix+Array.swift in Sources */,
+				4EF19E7D1C82103500B5DC75 /* Model.swift in Sources */,
+				4EF19E601C82100900B5DC75 /* ViewController.swift in Sources */,
+				4EF19E811C82106900B5DC75 /* Cube.swift in Sources */,
+				4EF19E7C1C82103500B5DC75 /* Vertex.swift in Sources */,
+				4EF19E5E1C82100900B5DC75 /* AppDelegate.swift in Sources */,
+				4EF19E7B1C82103500B5DC75 /* BaseEffect.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4EF19E611C82100900B5DC75 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EF19E621C82100900B5DC75 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4EF19E661C82100900B5DC75 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EF19E671C82100900B5DC75 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4EF19E6A1C82100900B5DC75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4EF19E6B1C82100900B5DC75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4EF19E6D1C82100900B5DC75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AnimateCube/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.pe.burt.ios.AnimateCube;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4EF19E6E1C82100900B5DC75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AnimateCube/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.pe.burt.ios.AnimateCube;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4EF19E551C82100900B5DC75 /* Build configuration list for PBXProject "AnimateCube" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EF19E6A1C82100900B5DC75 /* Debug */,
+				4EF19E6B1C82100900B5DC75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EF19E6C1C82100900B5DC75 /* Build configuration list for PBXNativeTarget "AnimateCube" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EF19E6D1C82100900B5DC75 /* Debug */,
+				4EF19E6E1C82100900B5DC75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4EF19E521C82100900B5DC75 /* Project object */;
+}
