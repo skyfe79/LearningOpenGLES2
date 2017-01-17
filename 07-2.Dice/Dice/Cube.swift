@@ -81,7 +81,7 @@ class Cube : Model {
         self.loadTexture("dice.png")
     }
     
-    override func updateWithDelta(dt: NSTimeInterval) {
+    override func updateWithDelta(_ dt: TimeInterval) {
         self.rotationZ = self.rotationZ + Float(M_PI*dt)
         self.rotationY = self.rotationY + Float(M_PI*dt)
     }
