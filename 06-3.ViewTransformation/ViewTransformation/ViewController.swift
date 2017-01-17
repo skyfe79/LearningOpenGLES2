@@ -18,7 +18,7 @@ class GLKUpdater : NSObject, GLKViewControllerDelegate {
     }
     
     
-    func glkViewControllerUpdate(controller: GLKViewController) {
+    func glkViewControllerUpdate(_ controller: GLKViewController) {
         self.glkViewController.square.updateWithDelta(self.glkViewController.timeSinceLastUpdate)
     }
 }
@@ -43,7 +43,7 @@ class ViewController: GLKViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func glkView(view: GLKView, drawInRect rect: CGRect) {
+    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(1.0, 0.0, 0.0, 1.0);
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
         
@@ -58,8 +58,8 @@ extension ViewController {
     
     func setupGLcontext() {
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(API: .OpenGLES2)
-        EAGLContext.setCurrentContext(glkView.context)
+        glkView.context = EAGLContext(api: .openGLES2)
+        EAGLContext.setCurrent(glkView.context)
     }
     
     func setupGLupdater() {
