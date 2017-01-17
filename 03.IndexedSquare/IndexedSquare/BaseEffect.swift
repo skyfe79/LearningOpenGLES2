@@ -22,17 +22,17 @@ class BaseEffect {
 }
 
 extension BaseEffect {
-    func compileShader(shaderName: String, shaderType: GLenum) -> GLuint {
-        let path = NSBundle.mainBundle().pathForResource(shaderName, ofType: nil)
+    func compileShader(_ shaderName: String, shaderType: GLenum) -> GLuint {
+        let path = Bundle.main.path(forResource: shaderName, ofType: nil)
         
         do {
             
             // swift로 컴파일할 때, 데이터 컨버전의 어려움이 있었다.
             // 이 부분을 잘 이해하자
-            let shaderString = try NSString(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+            let shaderString = try NSString(contentsOfFile: path!, encoding: String.Encoding.utf8.rawValue)
             let shaderHandle = glCreateShader(shaderType)
             var shaderStringLength : GLint = GLint(Int32(shaderString.length))
-            var shaderCString = shaderString.UTF8String as UnsafePointer<GLchar>
+            var shaderCString = shaderString.utf8String
             glShaderSource(
                 shaderHandle,
                 GLsizei(1),
@@ -48,11 +48,11 @@ extension BaseEffect {
                 let bufferLength : GLsizei = 1024
                 glGetShaderiv(shaderHandle, GLenum(GL_INFO_LOG_LENGTH), &infoLength)
                 
-                let info : [GLchar] = Array(count: Int(bufferLength), repeatedValue: GLchar(0))
+                let info : [GLchar] = Array(repeating: GLchar(0), count: Int(bufferLength))
                 var actualLength : GLsizei = 0
                 
-                glGetShaderInfoLog(shaderHandle, bufferLength, &actualLength, UnsafeMutablePointer(info))
-                NSLog(String(UTF8String: info)!)
+                glGetShaderInfoLog(shaderHandle, bufferLength, &actualLength, UnsafeMutablePointer(mutating: info))
+                NSLog(String(validatingUTF8: info)!)
                 exit(1)
             }
             
@@ -63,7 +63,7 @@ extension BaseEffect {
         }
     }
     
-    func compile(vertexShader vertexShader: String, fragmentShader: String) {
+    func compile(vertexShader: String, fragmentShader: String) {
         let vertexShaderName = self.compileShader(vertexShader, shaderType: GLenum(GL_VERTEX_SHADER))
         let fragmentShaderName = self.compileShader(fragmentShader, shaderType: GLenum(GL_FRAGMENT_SHADER))
         
@@ -71,7 +71,7 @@ extension BaseEffect {
         glAttachShader(self.programHandle, vertexShaderName)
         glAttachShader(self.programHandle, fragmentShaderName)
         
-        glBindAttribLocation(self.programHandle, VertexAttributes.Position.rawValue, "a_Position") // 정점 보내는 곳을 a_Position 어트리뷰트로 바인딩한다.
+        glBindAttribLocation(self.programHandle, VertexAttributes.position.rawValue, "a_Position") // 정점 보내는 곳을 a_Position 어트리뷰트로 바인딩한다.
         
         glLinkProgram(self.programHandle)
         
@@ -82,11 +82,11 @@ extension BaseEffect {
             let bufferLength : GLsizei = 1024
             glGetProgramiv(self.programHandle, GLenum(GL_INFO_LOG_LENGTH), &infoLength)
             
-            let info : [GLchar] = Array(count: Int(bufferLength), repeatedValue: GLchar(0))
+            let info : [GLchar] = Array(repeating: GLchar(0), count: Int(bufferLength))
             var actualLength : GLsizei = 0
             
-            glGetProgramInfoLog(self.programHandle, bufferLength, &actualLength, UnsafeMutablePointer(info))
-            NSLog(String(UTF8String: info)!)
+            glGetProgramInfoLog(self.programHandle, bufferLength, &actualLength, UnsafeMutablePointer(mutating: info))
+            NSLog(String(validatingUTF8: info)!)
             exit(1)
         }
     }
