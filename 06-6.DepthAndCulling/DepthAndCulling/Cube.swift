@@ -56,7 +56,7 @@ class Cube : Model {
         super.init(name: "cube", shader: shader, vertices: vertexList, indices: indexList)
     }
     
-    override func updateWithDelta(dt: NSTimeInterval) {
+    override func updateWithDelta(_ dt: TimeInterval) {
         self.rotationZ = self.rotationZ + Float(M_PI*dt)
         self.rotationY = self.rotationY + Float(M_PI*dt)
     }
