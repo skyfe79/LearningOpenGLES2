@@ -18,7 +18,7 @@ class GLKUpdater : NSObject, GLKViewControllerDelegate {
     }
     
     
-    func glkViewControllerUpdate(controller: GLKViewController) {
+    func glkViewControllerUpdate(_ controller: GLKViewController) {
         
     }
 }
@@ -59,7 +59,7 @@ class ViewController: GLKViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func glkView(view: GLKView, drawInRect rect: CGRect) {
+    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(1.0, 0.0, 0.0, 1.0);
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
         
@@ -76,8 +76,8 @@ extension ViewController {
     
     func setupGLcontext() {
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(API: .OpenGLES2)
-        EAGLContext.setCurrentContext(glkView.context)
+        glkView.context = EAGLContext(api: .openGLES2)
+        EAGLContext.setCurrent(glkView.context)
     }
     
     func setupGLupdater() {
@@ -98,31 +98,31 @@ extension ViewController {
         glGenBuffers(GLsizei(1), &vertexBuffer)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
         let count = vertices.count
-        let size =  sizeof(Vertex)
+        let size =  MemoryLayout<Vertex>.size
         glBufferData(GLenum(GL_ARRAY_BUFFER), count * size, vertices, GLenum(GL_STATIC_DRAW))
         
         glGenBuffers(GLsizei(1), &indexBuffer)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), indexBuffer)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), indices.count * sizeof(GLubyte), indices, GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), indices.count * MemoryLayout<GLubyte>.size, indices, GLenum(GL_STATIC_DRAW))
         
         
         // 현재 vao가 바인딩 되어 있어서 아래 함수를 실행하면 정점과 인덱스 데이터가 모두 vao에 저장된다.
-        glEnableVertexAttribArray(VertexAttributes.Position.rawValue)
+        glEnableVertexAttribArray(VertexAttributes.position.rawValue)
         glVertexAttribPointer(
-            VertexAttributes.Position.rawValue,
+            VertexAttributes.position.rawValue,
             3,
             GLenum(GL_FLOAT),
             GLboolean(GL_FALSE),
-            GLsizei(sizeof(Vertex)), BUFFER_OFFSET(0))
+            GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(0))
         
         
-        glEnableVertexAttribArray(VertexAttributes.Color.rawValue)
+        glEnableVertexAttribArray(VertexAttributes.color.rawValue)
         glVertexAttribPointer(
-            VertexAttributes.Color.rawValue,
+            VertexAttributes.color.rawValue,
             4,
             GLenum(GL_FLOAT),
             GLboolean(GL_FALSE),
-            GLsizei(sizeof(Vertex)), BUFFER_OFFSET(3 * sizeof(GLfloat))) // x, y, z | r, g, b, a :: offset is 3*sizeof(GLfloat)
+            GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(3 * MemoryLayout<GLfloat>.size)) // x, y, z | r, g, b, a :: offset is 3*sizeof(GLfloat)
         
         // 바인딩을 끈다
         glBindVertexArrayOES(0)
@@ -132,8 +132,7 @@ extension ViewController {
         
     }
     
-    func BUFFER_OFFSET(n: Int) -> UnsafePointer<Void> {
-        let ptr: UnsafePointer<Void> = nil
-        return ptr + n
+    func BUFFER_OFFSET(_ n: Int) -> UnsafeRawPointer? {
+        return UnsafeRawPointer(bitPattern: n)
     }
 }
