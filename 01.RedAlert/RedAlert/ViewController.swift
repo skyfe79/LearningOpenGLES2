@@ -18,8 +18,8 @@ class ViewController: GLKViewController {
         super.viewDidLoad()
         
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(API: .OpenGLES2)
-        EAGLContext.setCurrentContext(glkView.context)
+        glkView.context = EAGLContext(api: .openGLES2)
+        EAGLContext.setCurrent(glkView.context)
         
         self.glkUpdater = GLKUpdater(glkViewController: self)
         self.delegate = glkUpdater
@@ -29,7 +29,7 @@ class ViewController: GLKViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override func glkView(view: GLKView, drawInRect rect: CGRect) {
+    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(Float(glkUpdater.redValue), 0.0, 0.0, 1.0)
         
         // GLbitfield is typealias of UInt32
@@ -49,7 +49,7 @@ class GLKUpdater : NSObject, GLKViewControllerDelegate {
     }
     
     
-    func glkViewControllerUpdate(controller: GLKViewController) {
+    func glkViewControllerUpdate(_ controller: GLKViewController) {
         
         /// @see https://www.khanacademy.org/math/trigonometry/trig-function-graphs/graphing-sinusoids/v/amplitude-and-period-cosine-transformations
         redValue = (sin(self.glkViewController.timeSinceFirstResume * 2 * M_PI / durationOfFlash) * 0.5) + 0.5

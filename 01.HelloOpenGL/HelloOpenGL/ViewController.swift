@@ -17,14 +17,14 @@ class ViewController: GLKViewController {
         super.viewDidLoad()
         
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(API: .OpenGLES2)
+        glkView.context = EAGLContext(api: .openGLES2)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    override func glkView(view: GLKView, drawInRect rect: CGRect) {
+    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(1.0, 0.0, 0.0, 1.0)
         
         // GLbitfield is typealias of UInt32

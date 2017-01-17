@@ -30,7 +30,7 @@ class MaskedSquare : Model {
         }
     }
     
-    override func updateWithDelta(dt: NSTimeInterval) {
+    override func updateWithDelta(_ dt: TimeInterval) {
         let secsPerMove = 2.0
         self.position = GLKVector3Make(
             Float(sin(CACurrentMediaTime() * 2 * M_PI / secsPerMove)),

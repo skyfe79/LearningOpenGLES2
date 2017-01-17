@@ -18,7 +18,7 @@ class GLKUpdater : NSObject, GLKViewControllerDelegate {
     }
     
     
-    func glkViewControllerUpdate(controller: GLKViewController) {
+    func glkViewControllerUpdate(_ controller: GLKViewController) {
         self.glkViewController.frame.updateWithDelta(self.glkViewController.timeSinceLastUpdate)
     }
 }
@@ -44,7 +44,7 @@ class ViewController: GLKViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func glkView(view: GLKView, drawInRect rect: CGRect) {
+    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         
         //Transfomr4: Viewport: Normalized -> Window
         //glViewport(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)
@@ -70,9 +70,9 @@ extension ViewController {
     
     func setupGLcontext() {
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(API: .OpenGLES2)
-        glkView.drawableDepthFormat = .Format16         // for depth testing
-        EAGLContext.setCurrentContext(glkView.context)
+        glkView.context = EAGLContext(api: .openGLES2)
+        glkView.drawableDepthFormat = .format16         // for depth testing
+        EAGLContext.setCurrent(glkView.context)
     }
     
     func setupGLupdater() {

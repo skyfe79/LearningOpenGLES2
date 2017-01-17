@@ -10,7 +10,7 @@ import Foundation
 import GLKit
 
 enum VertexAttributes : GLuint {
-    case Position = 0
+    case position = 0
 }
 
 struct Vertex {

@@ -18,7 +18,7 @@ class GLKUpdater : NSObject, GLKViewControllerDelegate {
     }
     
     
-    func glkViewControllerUpdate(controller: GLKViewController) {
+    func glkViewControllerUpdate(_ controller: GLKViewController) {
         
     }
 }
@@ -58,26 +58,26 @@ class ViewController: GLKViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func glkView(view: GLKView, drawInRect rect: CGRect) {
+    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(1.0, 0.0, 0.0, 1.0);
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
         
         // shader.begin() 이 더 나은거 같다.
         shader.prepareToDraw()
         
-        glEnableVertexAttribArray(VertexAttributes.Position.rawValue)
+        glEnableVertexAttribArray(VertexAttributes.position.rawValue)
         glVertexAttribPointer(
-            VertexAttributes.Position.rawValue,
+            VertexAttributes.position.rawValue,
             3,
             GLenum(GL_FLOAT),
             GLboolean(GL_FALSE),
-            GLsizei(sizeof(Vertex)), nil)
+            GLsizei(MemoryLayout<Vertex>.size), nil)
         
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), indexBuffer)
         glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_BYTE), nil)
         
-        glDisableVertexAttribArray(VertexAttributes.Position.rawValue)
+        glDisableVertexAttribArray(VertexAttributes.position.rawValue)
         
     }
     
@@ -87,8 +87,8 @@ extension ViewController {
     
     func setupGLcontext() {
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(API: .OpenGLES2)
-        EAGLContext.setCurrentContext(glkView.context)
+        glkView.context = EAGLContext(api: .openGLES2)
+        EAGLContext.setCurrent(glkView.context)
     }
     
     func setupGLupdater() {
@@ -104,16 +104,16 @@ extension ViewController {
         glGenBuffers(GLsizei(1), &vertexBuffer)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
         let count = vertices.count
-        let size =  sizeof(Vertex)
+        let size =  MemoryLayout<Vertex>.size
         glBufferData(GLenum(GL_ARRAY_BUFFER), count * size, vertices, GLenum(GL_STATIC_DRAW))
         
         glGenBuffers(GLsizei(1), &indexBuffer)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), indexBuffer)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), indices.count * sizeof(GLubyte), indices, GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), indices.count * MemoryLayout<GLubyte>.size, indices, GLenum(GL_STATIC_DRAW))
     }
     
-    func BUFFER_OFFSET(n: Int) -> UnsafePointer<Void> {
-        let ptr: UnsafePointer<Void> = nil
-        return ptr + n * sizeof(Void)
+    func BUFFER_OFFSET(_ n: Int) -> UnsafeRawPointer {
+        let ptr: UnsafeRawPointer? = nil
+        return ptr! + n * MemoryLayout<Void>.size
     }
 }

@@ -25,7 +25,7 @@ class Square : Model {
         super.init(name: "square", shader: shader, vertices: vertexList, indices: indexList)
     }
     
-    override func updateWithDelta(dt: NSTimeInterval) {
+    override func updateWithDelta(_ dt: TimeInterval) {
         let secsPerMove = 2.0
         self.position = GLKVector3Make(
             Float(sin(CACurrentMediaTime() * 2 * M_PI / secsPerMove)),
