@@ -4,7 +4,7 @@ Learning OpenGL ES 2 in Swift. There is an OpenGL ES 2.0 Tutorial at [Raywenderl
 
 ## Contributor
  * Yoon-Soo, Lee([dansoonie](https://github.com/dansoonie))
-  * He converted all the source code to Swift 3.0 and stabilized it. Thank you for his hard work.
+  * He converted all the source code to Swift 3.0 and stabilized it. Thanks  for his hard work.
 
 ## Hello OpenGL
 
