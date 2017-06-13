@@ -2,6 +2,10 @@
 
 Learning OpenGL ES 2 in Swift. There is an OpenGL ES 2.0 Tutorial at [Raywenderlich channel on Youtube](https://www.youtube.com/playlist?list=PL23Revp-82LL_XoQEiTT6zsgHHrpjr1D9) or [www.raywenderlich.com](https://www.raywenderlich.com/69983/video-tutorial-beginner-opengl-es-glkit-part-0-introduction). This tutorial is really great! If you have to learn the opengl es 2.0, you'd like to watch the opengl es 2.0 video tutorial whatever you are iOS developer or Android developer. But This tutorial's example was written in ObjectiveC. So I've made the examples in swift while I am following the tutorial. I've excepted last four examples for making game in 3D.
 
+## Support Swift language version
+ * `master` branch: Swift 4
+ * `swift/3.x` branch : Swift 3.x
+ 
 ## Contributor
  * Yoon-Soo, Lee([dansoonie](https://github.com/dansoonie))
   * He converted all the source code to Swift 3.0 and stabilized it. Thanks  for his hard work.
