@@ -17,7 +17,7 @@ class ViewController: GLKViewController {
         super.viewDidLoad()
         
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(api: .openGLES2)
+        glkView.context = EAGLContext(api: .openGLES2)!
     }
 
     override func didReceiveMemoryWarning() {

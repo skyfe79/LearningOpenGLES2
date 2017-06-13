@@ -57,8 +57,8 @@ class Cube : Model {
     }
     
     override func updateWithDelta(_ dt: TimeInterval) {
-        self.rotationZ = self.rotationZ + Float(M_PI*dt)
-        self.rotationY = self.rotationY + Float(M_PI*dt)
+        self.rotationZ = self.rotationZ + Float(Double.pi*dt)
+        self.rotationY = self.rotationY + Float(Double.pi*dt)
     }
 
 }

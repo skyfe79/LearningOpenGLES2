@@ -118,6 +118,7 @@ class Model {
         
     }
     
+    @discardableResult
     func loadTexture(_ filename: String) -> GLuint {
         
         let path = Bundle.main.path(forResource: filename, ofType: nil)!

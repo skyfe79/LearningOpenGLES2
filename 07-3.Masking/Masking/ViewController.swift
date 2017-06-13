@@ -70,7 +70,7 @@ extension ViewController {
     
     func setupGLcontext() {
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(api: .openGLES2)
+        glkView.context = EAGLContext(api: .openGLES2)!
         glkView.drawableDepthFormat = .format16         // for depth testing
         EAGLContext.setCurrent(glkView.context)
     }

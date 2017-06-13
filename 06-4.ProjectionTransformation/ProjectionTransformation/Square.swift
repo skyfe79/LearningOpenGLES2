@@ -28,7 +28,7 @@ class Square : Model {
     override func updateWithDelta(_ dt: TimeInterval) {
         let secsPerMove = 2.0
         self.position = GLKVector3Make(
-            Float(sin(CACurrentMediaTime() * 2 * M_PI / secsPerMove)),
+            Float(sin(CACurrentMediaTime() * 2 * Double.pi / secsPerMove)),
             self.position.y,
             self.position.z)
     }

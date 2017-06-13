@@ -18,7 +18,7 @@ class ViewController: GLKViewController {
         super.viewDidLoad()
         
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(api: .openGLES2)
+        glkView.context = EAGLContext(api: .openGLES2)!
         EAGLContext.setCurrent(glkView.context)
         
         self.glkUpdater = GLKUpdater(glkViewController: self)
@@ -52,7 +52,7 @@ class GLKUpdater : NSObject, GLKViewControllerDelegate {
     func glkViewControllerUpdate(_ controller: GLKViewController) {
         
         /// @see https://www.khanacademy.org/math/trigonometry/trig-function-graphs/graphing-sinusoids/v/amplitude-and-period-cosine-transformations
-        redValue = (sin(self.glkViewController.timeSinceFirstResume * 2 * M_PI / durationOfFlash) * 0.5) + 0.5
+        redValue = (sin(self.glkViewController.timeSinceFirstResume * 2 * Double.pi / durationOfFlash) * 0.5) + 0.5
     }
 }
 

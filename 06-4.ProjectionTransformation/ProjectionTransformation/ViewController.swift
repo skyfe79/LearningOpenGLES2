@@ -62,7 +62,7 @@ extension ViewController {
     
     func setupGLcontext() {
         glkView = self.view as! GLKView
-        glkView.context = EAGLContext(api: .openGLES2)
+        glkView.context = EAGLContext(api: .openGLES2)!
         EAGLContext.setCurrent(glkView.context)
     }
     
