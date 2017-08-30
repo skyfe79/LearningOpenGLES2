@@ -1,0 +1,15 @@
+uniform highp mat4 u_ModelViewMatrix; /* 유니폼은  모든 정점에서 동일한 것 */
+
+attribute vec4 a_Position;  /* 속성은 정점마다 달라질 수 있는 것 */
+attribute vec4 a_Color; /* 속성은 정점마다 달라질 수 있는 것 */
+
+varying lowp vec4 frag_Color; /* 바링은 vertexshader -> fragmentshader 로 갈 때 보간이 되는 것 */
+
+void main(void) {
+frag_Color = a_Color;
+gl_Position = u_ModelViewMatrix * a_Position;
+}
+
+
+// 쉐이더에서 구조체를 사용하는 방법을 잘 보라
+// 그리고 그 구조체의 유니폼에 데이터를 주입하는 방법을 잘 보라
