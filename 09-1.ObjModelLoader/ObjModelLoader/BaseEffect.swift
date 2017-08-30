@@ -27,7 +27,7 @@ class BaseEffect {
     var texture: GLuint = 0
     
     init(vertexShader: String, fragmentShader: String) {
-        self.compile(vertexShader: vertexShader, fragmentShader: fragmentShader)
+        self.compile(vertexShader, fragmentShader: fragmentShader)
     }
     
     func prepareToDraw() {
@@ -102,7 +102,7 @@ extension BaseEffect {
         }
     }
     
-    func compile(vertexShader: String, fragmentShader: String) {
+    func compile(_ vertexShader: String, fragmentShader: String) {
         let vertexShaderName = self.compileShader(vertexShader, shaderType: GLenum(GL_VERTEX_SHADER))
         let fragmentShaderName = self.compileShader(fragmentShader, shaderType: GLenum(GL_FRAGMENT_SHADER))
         

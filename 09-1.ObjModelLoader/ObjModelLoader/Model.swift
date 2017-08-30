@@ -5,18 +5,15 @@
 //  Created by burt on 2016. 2. 27..
 //  Copyright © 2016년 BurtK. All rights reserved.
 //
-//  VAO가 있어서 이렇게 정점 및 인덱스 데이터를 모델로 따로 분리할 수 있다.
-//  모델 생성시나 렌더링 전 필요한 시기에 VAO를 만들고 정점 및 인덱스 데이터를 
-//  CPU에서 GPU로 올리면 된다.
 import GLKit
 
 class Model {
     var shader: BaseEffect!
     var name: String!
     var vertices: [Vertex]!
-    var vertexCount: GLuint! // 없어도 됨
-    var indices: [GLubyte]!
-    var indexCount: GLuint! // 없어도 됨
+    var vertexCount: GLuint!
+    var indices: [GLuint]!
+    var indexCount: GLuint!
     
     var vao: GLuint = 0
     var vertexBuffer: GLuint = 0
@@ -31,9 +28,15 @@ class Model {
     var rotationZ : Float = 0.0
     var scale : Float = 1.0
     
-    init(name: String, shader: BaseEffect, vertices: [Vertex], indices: [GLubyte]) {
+    init(name: String, shader: BaseEffect, vertices: [Vertex], indices: [GLuint]) {
         self.name = name
         self.shader = shader
+        
+        self.updateBuffers(vertices: vertices, indices: indices)
+    }
+    
+    func updateBuffers(vertices: [Vertex], indices: [GLuint]) {
+        
         self.vertices = vertices
         self.vertexCount = GLuint(vertices.count)
         self.indices = indices
@@ -51,7 +54,7 @@ class Model {
         
         glGenBuffers(GLsizei(1), &indexBuffer)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), indexBuffer)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), indices.count * MemoryLayout<GLubyte>.size, indices, GLenum(GL_STATIC_DRAW))
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), indices.count * MemoryLayout<GLuint>.size, indices, GLenum(GL_STATIC_DRAW))
         
         
         // 현재 vao가 바인딩 되어 있어서 아래 함수를 실행하면 정점과 인덱스 데이터가 모두 vao에 저장된다.
@@ -88,7 +91,7 @@ class Model {
             GLenum(GL_FLOAT),
             GLboolean(GL_FALSE),
             GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET((3+4+2) * MemoryLayout<GLfloat>.size)) // x, y, z | r, g, b, a | u, v | nx, ny, nz :: offset is (3+4+2)*sizeof(GLfloat)
-
+        
         
         // 바인딩을 끈다
         glBindVertexArrayOES(0)
@@ -106,7 +109,7 @@ class Model {
         return modelMatrix
     }
     
-    func renderWithParentMoelViewMatrix(_ parentModelViewMatrix: GLKMatrix4) {
+    func render(withParentModelViewMatrix parentModelViewMatrix: GLKMatrix4) {
         
         let modelViewMatrix : GLKMatrix4 = GLKMatrix4Multiply(parentModelViewMatrix, modelMatrix())
         
@@ -115,9 +118,9 @@ class Model {
         shader.prepareToDraw()
         
         glBindVertexArrayOES(vao)
-        glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_BYTE), nil)
+        glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_INT), nil)
         glBindVertexArrayOES(0)
-
+        
     }
     
     func updateWithDelta(_ dt: TimeInterval) {

@@ -34,6 +34,10 @@ struct Vertex {
     var nz : GLfloat = 0.0
     
     
+    init() {
+        
+    }
+    
     init(_ x : GLfloat, _ y : GLfloat, _ z : GLfloat, _ r : GLfloat = 0.0, _ g : GLfloat = 0.0, _ b : GLfloat = 0.0, _ a : GLfloat = 1.0, _ u : GLfloat = 0.0, _ v : GLfloat = 0.0, _ nx : GLfloat = 0.0, _ ny : GLfloat = 0.0, _ nz : GLfloat = 0.0) {
         self.x = x
         self.y = y

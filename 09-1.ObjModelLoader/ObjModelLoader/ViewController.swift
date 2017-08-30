@@ -19,7 +19,7 @@ class GLKUpdater : NSObject, GLKViewControllerDelegate {
     
     
     func glkViewControllerUpdate(_ controller: GLKViewController) {
-        self.glkViewController.cube.updateWithDelta(self.glkViewController.timeSinceLastUpdate)
+        self.glkViewController.model.updateWithDelta(self.glkViewController.timeSinceLastUpdate)
     }
 }
 
@@ -29,8 +29,7 @@ class ViewController: GLKViewController {
     var glkView: GLKView!
     var glkUpdater: GLKUpdater!
     var shader : BaseEffect!
-    var square : Square!
-    var cube : Cube!
+    var model : Model!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +58,8 @@ class ViewController: GLKViewController {
         
         let viewMatrix : GLKMatrix4 =  GLKMatrix4Rotate(GLKMatrix4MakeTranslation(0, 0, -5), GLKMathDegreesToRadians(20), 1, 0, 0)
         
-        //self.square.renderWithParentMoelViewMatrix(viewMatrix)
-        self.cube.renderWithParentMoelViewMatrix(viewMatrix)
+        self.model.render(withParentModelViewMatrix: viewMatrix)
     }
-    
-    
 }
 
 extension ViewController {
@@ -88,9 +84,24 @@ extension ViewController {
             GLfloat(self.view.bounds.size.width / self.view.bounds.size.height),
             1,
             150)
+
+        // load obj file named "key.obj"
+        let fixtureHelper = FixtureHelper()
+        let source = try? fixtureHelper.loadObjFixture(name: "key")
         
-        self.cube = Cube(shader: self.shader)
-        
+        if let source = source {
+            let loader = ObjLoader(source: source, basePath: fixtureHelper.resourcePath)
+            do {
+                let shapes = try loader.read()
+                
+                self.model = ObjModel(name: "key", shape: shapes.first!, shader: self.shader)
+                self.model.scale = 0.3
+            } catch {
+                print("Parsing failed with unknown error")
+            }
+        } else {
+            print("obj not found")
+        }
     }
     
     
