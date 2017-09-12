@@ -90,6 +90,13 @@ Learning OpenGL ES 2 in Swift. There is an OpenGL ES 2.0 Tutorial at [Raywenderl
 
 ![](08-3.SpecularLight/result.png)
 
+## ObjModelLoader
+
+![](09-1.ObjModelLoader/result.png)
+
+obj parsing taken from here:
+* https://github.com/k0nserv/SwiftObjLoader
+
 ## Ray Wenderlich License
 
 The Ray Wenderlich License
