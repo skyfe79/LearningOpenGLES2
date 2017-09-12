@@ -46,7 +46,7 @@ class ViewController: GLKViewController {
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         
         //Transfomr4: Viewport: Normalized -> Window
-        //glViewport(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)
+        //glViewport(0, 0, GLsizei(self.view.bounds.size.width), GLsizei(self.view.bounds.size.height))
         //이건 GLKit이 자동으로 해준다
         glClearColor(1.0, 0.0, 0.0, 1.0);
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
