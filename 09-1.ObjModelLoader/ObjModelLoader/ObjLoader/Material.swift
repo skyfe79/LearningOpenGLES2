@@ -14,12 +14,12 @@ private func doubleEquality(_ a: Double, _ b: Double) -> Bool {
 
     if a == b { // shortcut for infinities
         return true
-    } else if (a == 0 || b == 0 || diff < DBL_MIN) {
-        return diff < (1e-5 * DBL_MIN)
+    } else if (a == 0 || b == 0 || diff < Double.leastNormalMagnitude) {
+        return diff < (1e-5 * Double.leastNormalMagnitude)
     } else {
         let absA = abs(a)
         let absB = abs(b)
-        return diff / min((absA + absB), DBL_MAX) < 1e-5
+        return diff / min((absA + absB), Double.greatestFiniteMagnitude) < 1e-5
     }
 }
 

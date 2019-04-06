@@ -166,11 +166,11 @@ public final class MaterialLoader {
                     }
 
                     state = State()
-                    state.materialName = scanner.readLine() as! String
+                    state.materialName = (scanner.readLine()! as String)
                     scanner.moveToNextLine()
                     continue
                 }
-                scanner.readLine()
+                let _ = scanner.readLine()
                 scanner.moveToNextLine()
                 continue
             }

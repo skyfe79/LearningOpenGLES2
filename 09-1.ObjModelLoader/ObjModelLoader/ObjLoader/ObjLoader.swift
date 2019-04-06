@@ -31,13 +31,13 @@ public final class ObjLoader {
     }
 
     // Source markers
-    fileprivate static let commentMarker = "#".characters.first
-    fileprivate static let vertexMarker = "v".characters.first
+    fileprivate static let commentMarker = "#"
+    fileprivate static let vertexMarker = "v"
     fileprivate static let normalMarker = "vn"
     fileprivate static let textureCoordMarker = "vt"
-    fileprivate static let objectMarker = "o".characters.first
-    fileprivate static let groupMarker = "g".characters.first
-    fileprivate static let faceMarker = "f".characters.first
+    fileprivate static let objectMarker = "o"
+    fileprivate static let groupMarker = "g"
+    fileprivate static let faceMarker = "f"
     fileprivate static let materialLibraryMarker = "mtllib"
     fileprivate static let useMaterialMarker = "usemtl"
 
@@ -175,35 +175,35 @@ public final class ObjLoader {
     }
 
     fileprivate static func isComment(_ marker: String) -> Bool {
-        return marker.characters.first == commentMarker
+        return marker == commentMarker
     }
 
     fileprivate static func isVertex(_ marker: String) -> Bool {
-        return marker.characters.count == 1 && marker.characters.first == vertexMarker
+        return marker.count == 1 && marker == vertexMarker
     }
 
     fileprivate static func isNormal(_ marker: String) -> Bool {
-        return marker.characters.count == 2 && marker == normalMarker
+        return marker.count == 2 && marker == normalMarker
         //return marker.characters.count == 2 && marker.substring(to: marker.index(from: 2)) == normalMarker
         //return true
     }
 
     fileprivate static func isTextureCoord(_ marker: String) -> Bool {
-        return marker.characters.count == 2 && marker == textureCoordMarker
+        return marker.count == 2 && marker == textureCoordMarker
         //return marker.characters.count == 2 && marker.substring(to: marker.index(from: 2)) == textureCoordMarker
         //return true
     }
 
     fileprivate static func isObject(_ marker: String) -> Bool {
-        return marker.characters.count == 1 && marker.characters.first == objectMarker
+        return marker.count == 1 && marker == objectMarker
     }
 
     fileprivate static func isGroup(_ marker: String) -> Bool {
-        return marker.characters.count == 1 && marker.characters.first == groupMarker
+        return marker.count == 1 && marker == groupMarker
     }
 
     fileprivate static func isFace(_ marker: String) -> Bool {
-        return marker.characters.count == 1 && marker.characters.first == faceMarker
+        return marker.count == 1 && marker == faceMarker
     }
 
     fileprivate static func isMaterialLibrary(_ marker: String) -> Bool {
