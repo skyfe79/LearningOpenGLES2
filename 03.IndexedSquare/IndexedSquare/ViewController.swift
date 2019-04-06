@@ -62,7 +62,6 @@ class ViewController: GLKViewController {
         glClearColor(1.0, 0.0, 0.0, 1.0);
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
         
-        // shader.begin() 이 더 나은거 같다.
         shader.prepareToDraw()
         
         glEnableVertexAttribArray(VertexAttributes.position.rawValue)
@@ -86,7 +85,7 @@ class ViewController: GLKViewController {
 extension ViewController {
     
     func setupGLcontext() {
-        glkView = self.view as! GLKView
+        glkView = (self.view as! GLKView)
         glkView.context = EAGLContext(api: .openGLES2)!
         EAGLContext.setCurrent(glkView.context)
     }
