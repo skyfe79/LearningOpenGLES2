@@ -28,6 +28,6 @@ extension Comparator : Monoid {
   }
 
   public func op(_ other: Comparator) -> Comparator {
-    return Comparator { lhs, rhs in self.compare(lhs, rhs) >>> other.compare(lhs, rhs) }
+    return Comparator { lhs, rhs in self.compare(lhs, rhs) <> other.compare(lhs, rhs) }
   }
 }

@@ -5,13 +5,13 @@ precedencegroup LeftApplyPrecedence {
   lowerThan: TernaryPrecedence
 }
 
+/// infixr 9
 precedencegroup FunctionCompositionPrecedence {
   associativity: right
   higherThan: LeftApplyPrecedence
 }
 
 // MARK: Lens Precedence Group
-
 precedencegroup LensSetPrecedence {
   associativity: left
   higherThan: FunctionCompositionPrecedence
@@ -22,16 +22,23 @@ precedencegroup LensSetPrecedence {
 precedencegroup RunesMonadicPrecedenceRight {
   associativity: right
   lowerThan: LogicalDisjunctionPrecedence
-  higherThan: AssignmentPrecedence
+  higherThan: TagAttachmentPrecedence
 }
 
 precedencegroup RunesMonadicPrecedenceLeft {
+  associativity: left
+  lowerThan: LogicalDisjunctionPrecedence
+  higherThan: TagAttachmentPrecedence
+}
+
+precedencegroup TagAttachmentPrecedence {
   associativity: left
   lowerThan: LogicalDisjunctionPrecedence
   higherThan: AssignmentPrecedence
 }
 
 // MARK: Alternative Precedence Group
+/// infixl 3
 precedencegroup RunesAlternativePrecedence {
   associativity: left
   higherThan: LogicalConjunctionPrecedence
@@ -39,21 +46,36 @@ precedencegroup RunesAlternativePrecedence {
 }
 
 // MARK: Applicative Precedence Group
-
+/// infixl 4
 precedencegroup RunesApplicativePrecedence {
   associativity: left
   higherThan: RunesAlternativePrecedence
   lowerThan: NilCoalescingPrecedence
 }
 
+/// infixl 5
 precedencegroup RunesApplicativeSequencePrecedence {
   associativity: left
   higherThan: RunesApplicativePrecedence
   lowerThan: NilCoalescingPrecedence
 }
 
+
 // MARK: -
 
+infix operator <?>: TagAttachmentPrecedence
+
+/**
+ Expected function type: `(Semigroup a) => a -> a -> a`
+ Haskell `infixl 6`
+ */
+infix operator <>: RunesApplicativePrecedence
+
+/// pre-composition, i.e `<> f`
+prefix operator <>
+
+/// post-composition, i.e `f <>`
+postfix operator <>
 
 // MARK: Functor Operators
 /**
@@ -63,9 +85,6 @@ precedencegroup RunesApplicativeSequencePrecedence {
   Haskell `infixl 4`
 */
 infix operator <^> : RunesApplicativePrecedence
-
-
-
 
 
 
@@ -105,9 +124,8 @@ infix operator *> : RunesApplicativeSequencePrecedence
   Haskell `infixl 3`
 */
 infix operator <|> : RunesAlternativePrecedence
-
-
-
+infix operator <||> : RunesApplicativeSequencePrecedence
+infix operator .|. : RunesAlternativePrecedence
 
 
 
@@ -115,7 +133,8 @@ infix operator <|> : RunesAlternativePrecedence
 /**
   map a function over a value with context and flatten the result
 
-  Expected function type: `m a -> (a -> m b) -> m b`
+  Expected function type: `(Monad m) => m a -> (a -> m b) -> m b`
+  Expected function type: `(Monad m) => m a -> m b -> m b`
   Haskell `infixl 1`
 */
 infix operator >>- : RunesMonadicPrecedenceLeft
@@ -123,7 +142,8 @@ infix operator >>- : RunesMonadicPrecedenceLeft
 /**
   map a function over a value with context and flatten the result
 
-  Expected function type: `(a -> m b) -> m a -> m b`
+  Expected function type: `(Monad m) => (a -> m b) -> m a -> m b`
+  Expected function type: `(Monad m) => m b -> m a -> m b`
   Haskell `infixr 1`
 */
 infix operator -<< : RunesMonadicPrecedenceRight
@@ -164,6 +184,36 @@ prefix operator >>>
 postfix operator >>>
 
 
+// MARK: Kleisi Composition Operators
+
+/// Compose forward operator, i.e. `f >-> g`,
+/// f :: a -> m b,  g :: b -> m c
+/// f >-> g :: a -> mc
+infix operator >-> : FunctionCompositionPrecedence
+
+/// Compose forward operator, i.e. `f <-< g`,
+/// f :: b -> m c,  g :: a -> m b
+/// f <-< g :: a -> mc
+infix operator <-< : FunctionCompositionPrecedence
+
+/// pre-composition, i.e `>-> f`
+prefix operator >->
+
+/// post-composition, i.e `f >->`
+postfix operator >->
+
+/// optional operator
+/// i.e. `a: A := a.? : A?`
+postfix operator .?
+
+/// zero or many
+postfix operator .*
+
+/// one or more
+postfix operator .+
+
+/// Parser nil collascing
+infix operator .?? : LensSetPrecedence
 
 // MARK: Lens Operators
 

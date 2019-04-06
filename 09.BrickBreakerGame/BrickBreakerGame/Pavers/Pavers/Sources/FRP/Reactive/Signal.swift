@@ -897,6 +897,10 @@ extension Signal {
 		return Signal.combineLatest(self, other)
 	}
 
+  public func tick() -> Signal<Value, Error> {
+   return self.delay(0.001, on: QueueScheduler.main)
+  }
+  
 	/// Delay `value` and `completed` events by the given interval, forwarding
 	/// them on the given scheduler.
 	///
@@ -1320,6 +1324,12 @@ extension Signal {
 			return disposable
 		}
 	}
+  
+  public func split(on trigger: Signal<(), NoError>) -> (front: Signal<Value, Error>, tail: Signal<Value, Error>) {
+    let f = self.take(until: trigger)
+    let t = self.skip(until: trigger)
+    return (f, t)
+  }
 
 	/// Forward events from `self` with history: values of the returned signal
 	/// are a tuples whose first member is the previous value and whose second member
@@ -1645,6 +1655,14 @@ extension Signal {
 		return Signal.zip(self, other)
 	}
 
+  public func sync<U>(with other: Signal<U, Error>) -> Signal<(Value, U), Error> {
+    return Signal.zip(self, other)
+  }
+  
+  public func sync<U>(on other: Signal<U, Error>) -> Signal<Value, Error> {
+    return Signal.zip(self, other).map(first)
+  }
+  
 	/// Forward the latest value on `scheduler` after at least `interval`
 	/// seconds have passed since *the returned signal* last sent a value.
 	///

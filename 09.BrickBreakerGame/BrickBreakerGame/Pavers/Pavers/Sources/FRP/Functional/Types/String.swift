@@ -3,3 +3,10 @@ extension String: Semigroup {
     return self + other
   }
 }
+
+
+extension String: Monoid {
+  public static func identity() -> String {
+    return ""
+  }
+}

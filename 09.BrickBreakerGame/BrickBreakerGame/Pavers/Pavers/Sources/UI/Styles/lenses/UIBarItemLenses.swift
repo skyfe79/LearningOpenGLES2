@@ -3,7 +3,7 @@ import PaversFRP
 import UIKit
 
 public protocol UIBarItemProtocol: KSObjectProtocol {
-  var enabled: Bool { get set }
+  var isEnabled: Bool { get set }
   var title: String? { get set }
   var image: UIImage? { get set }
   var imageInsets: UIEdgeInsets { get set }
@@ -14,14 +14,18 @@ public protocol UIBarItemProtocol: KSObjectProtocol {
   func setTitleTextAttributes(_ attributes: [String : Any]?, for state: UIControlState)
 }
 
-extension UIBarItem: UIBarItemProtocol {}
+extension UIBarItem: UIBarItemProtocol {
+  public func setTitleTextAttributes(_ attributes: [String : Any]?, for state: UIControlState) {
+    
+  }
+}
 
 public extension LensHolder where Object: UIBarItemProtocol {
 
   public var enabled: Lens<Object, Bool> {
     return Lens(
-      view: { $0.enabled },
-      set: { $1.enabled = $0; return $1 }
+      view: { $0.isEnabled },
+      set: { $1.isEnabled = $0; return $1 }
     )
   }
 

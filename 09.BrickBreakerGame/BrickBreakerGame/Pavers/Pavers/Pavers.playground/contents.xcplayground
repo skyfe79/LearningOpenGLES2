@@ -5,5 +5,21 @@
         <page name='UIGradientView'/>
         <page name='GitHotFrontPage'/>
         <page name='VisualConstraintCollector'/>
+        <page name='Curry'/>
+        <page name='Class and Subtype existentials'/>
+        <page name='String'/>
+        <page name='ButtonStyles'/>
+        <page name='UIFontStyles'/>
+        <page name='Timer'/>
+        <page name='DispatchOnce'/>
+        <page name='Parsec'/>
+        <page name='ParsecArithmetic'/>
+        <page name='ParsecArithmetic2'/>
+        <page name='ParsecArithmetic3'/>
+        <page name='Date'/>
+        <page name='ParsecMockChar'/>
+        <page name='ParsecMockMany'/>
+        <page name='CharacterSet'/>
+        <page name='SectionFunction'/>
     </pages>
 </playground>

@@ -43,7 +43,7 @@ extension UIView {
   }
 
   public var referencingConstraints: [NSLayoutConstraint] {
-    return self.referencingConstraints
+    return self.referencingConstraintsInSuperviews
       + self.constraints.filter{
         let t = type(of: $0)
         return t == NSLayoutConstraint.self && $0.refers(to: self)

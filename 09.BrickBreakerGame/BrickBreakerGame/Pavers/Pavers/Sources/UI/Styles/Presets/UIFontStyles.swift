@@ -19,18 +19,18 @@ extension UIFont {
     let monospacedDescriptor = self.fontDescriptor
       .addingAttributes(
         [
-          UIFontDescriptorFeatureSettingsAttribute: [
+          UIFontDescriptor.AttributeName.featureSettings: [
             [
-              UIFontFeatureTypeIdentifierKey: kNumberSpacingType,
-              UIFontFeatureSelectorIdentifierKey: kMonospacedNumbersSelector
+              UIFontDescriptor.FeatureKey.featureIdentifier: kNumberSpacingType,
+              UIFontDescriptor.FeatureKey.typeIdentifier: kMonospacedNumbersSelector
             ],
             [
-              UIFontFeatureTypeIdentifierKey: kStylisticAlternativesType,
-              UIFontFeatureSelectorIdentifierKey: kStylisticAltTwoOnSelector
+              UIFontDescriptor.FeatureKey.featureIdentifier: kStylisticAlternativesType,
+              UIFontDescriptor.FeatureKey.typeIdentifier: kStylisticAltTwoOnSelector
             ],
             [
-              UIFontFeatureTypeIdentifierKey: kStylisticAlternativesType,
-              UIFontFeatureSelectorIdentifierKey: kStylisticAltOneOnSelector
+              UIFontDescriptor.FeatureKey.featureIdentifier: kStylisticAlternativesType,
+              UIFontDescriptor.FeatureKey.typeIdentifier: kStylisticAltOneOnSelector
             ]
           ]
         ]
@@ -38,7 +38,7 @@ extension UIFont {
 
     return UIFont(descriptor: monospacedDescriptor, size: 0.0)
   }
-
+  
   /// regular, 17pt font, 22pt leading, -24pt tracking
   public static func ksr_body(size: CGFloat? = nil) -> UIFont {
     return .preferredFont(style: .body, size: size)
@@ -46,7 +46,7 @@ extension UIFont {
 
   /// regular, 16pt font, 21pt leading, -20pt tracking
   public static func ksr_callout(size: CGFloat? = nil) -> UIFont {
-    return .preferredFont(style: .callout, size: size)
+    return .preferredFont(style: .body, size: size)
   }
 
   /// regular, 12pt font, 16pt leading, 0pt tracking
@@ -76,17 +76,17 @@ extension UIFont {
 
   /// light, 28pt font, 34pt leading, 13pt tracking
   public static func ksr_title1(size: CGFloat? = nil) -> UIFont {
-    return .preferredFont(style: .title1, size: size)
+    return .preferredFont(style: .body, size: size)
   }
 
   /// regular, 22pt font, 28pt leading, 16pt tracking
   public static func ksr_title2(size: CGFloat? = nil) -> UIFont {
-    return .preferredFont(style: .title2, size: size)
+    return .preferredFont(style: .body, size: size)
   }
 
   /// regular, 20pt font, 24pt leading, 19pt tracking
   public static func ksr_title3(size: CGFloat? = nil) -> UIFont {
-    return .preferredFont(style: .title3, size: size)
+    return .preferredFont(style: .body, size: size)
   }
 
   // swiftlint:disable cyclomatic_complexity
@@ -95,15 +95,11 @@ extension UIFont {
     let defaultSize: CGFloat
     switch style {
     case UIFontTextStyle.body:         defaultSize = 17
-    case UIFontTextStyle.callout:      defaultSize = 16
     case UIFontTextStyle.caption1:     defaultSize = 12
     case UIFontTextStyle.caption2:     defaultSize = 11
     case UIFontTextStyle.footnote:     defaultSize = 13
     case UIFontTextStyle.headline:     defaultSize = 17
     case UIFontTextStyle.subheadline:  defaultSize = 15
-    case UIFontTextStyle.title1:       defaultSize = 28
-    case UIFontTextStyle.title2:       defaultSize = 22
-    case UIFontTextStyle.title3:       defaultSize = 20
     default:                           defaultSize = 17
     }
 

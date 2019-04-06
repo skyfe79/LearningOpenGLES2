@@ -32,7 +32,7 @@ extension Reactive where Base: AnyObject {
 	///
 	/// - returns: A binding target.
 	public subscript<Value>(keyPath: ReferenceWritableKeyPath<Base, Value>) -> BindingTarget<Value> {
-		return BindingTarget(on: UIScheduler(), lifetime: ReactiveCocoa.lifetime(of: base), object: base, keyPath: keyPath)
+		return BindingTarget(on: UIScheduler(), lifetime: PaversUI.lifetime(of: base), object: base, keyPath: keyPath)
 	}
 
 	/// Creates a binding target that writes to the object with the given key path.
@@ -43,7 +43,7 @@ extension Reactive where Base: AnyObject {
 	///
 	/// - returns: A binding target.
 	public subscript<Value>(keyPath: ReferenceWritableKeyPath<Base, Value>, on scheduler: Scheduler) -> BindingTarget<Value> {
-		return BindingTarget(on: scheduler, lifetime: ReactiveCocoa.lifetime(of: base), object: base, keyPath: keyPath)
+		return BindingTarget(on: scheduler, lifetime: PaversUI.lifetime(of: base), object: base, keyPath: keyPath)
 	}
 }
 #endif

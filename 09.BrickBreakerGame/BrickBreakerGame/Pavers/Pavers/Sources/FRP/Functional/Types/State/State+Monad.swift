@@ -22,7 +22,7 @@ public func -<< <A, B, S> (_ f: @escaping ((A) -> State<S, B>), _ s: @escaping S
 }
 
 
-public func >>> <A, B, C, S>
+public func >-> <A, B, C, S>
   (_ f: @escaping (A) -> State<S, B>,_ g: @escaping (B) -> State<S, C>)
   -> ((A) -> State<S, C>) {
     return { (a: A) -> State<S,C> in
@@ -31,10 +31,10 @@ public func >>> <A, B, C, S>
     }
 }
 
-public func <<< <A, B, C, S>
+public func <-< <A, B, C, S>
   (_ f: @escaping (B) -> State<S, C>,_ g: @escaping (A) -> State<S, B>)
   -> ((A) -> State<S, C>) {
-    return g >>> f
+    return g >-> f
 }
 
 
@@ -70,7 +70,7 @@ public func -<< <A, B, S> (_ f: @escaping ((A) -> NominalState<S, B>), _ s: Nomi
 }
 
 
-public func >>> <A, B, C, S>
+public func >-> <A, B, C, S>
   (_ f: @escaping (A) -> NominalState<S, B>,_ g: @escaping (B) -> NominalState<S, C>)
   -> ((A) -> NominalState<S, C>) {
     return { (a: A) -> NominalState<S,C> in
@@ -79,10 +79,10 @@ public func >>> <A, B, C, S>
     }
 }
 
-public func <<< <A, B, C, S>
+public func <-< <A, B, C, S>
   (_ f: @escaping (B) -> NominalState<S, C>,_ g: @escaping (A) -> NominalState<S, B>)
   -> ((A) -> NominalState<S, C>) {
-    return g >>> f
+    return g >-> f
 }
 
 

@@ -194,7 +194,7 @@ public final class ValidatingProperty<Value, ValidationError: Swift.Error>: Muta
 		with other: ValidatingProperty<U, E>,
 		_ validator: @escaping (Value, U) -> Decision
 	) {
-		self.init(inner, with: other, validator)
+		self.init(inner.value, with: other, validator)
 	}
 
 	/// Create a `ValidatingProperty` that validates mutations before

@@ -44,10 +44,10 @@ extension UIView {
       }
     #endif
 
-    let hhLens = UIView.lens.contentHuggingPriorityForAxis(.horizontal).view
-    let hvLens = UIView.lens.contentHuggingPriorityForAxis(.vertical).view
-    let chLens = UIView.lens.contentCompressionResistancePriorityForAxis(.horizontal).view
-    let cvLens = UIView.lens.contentCompressionResistancePriorityForAxis(.vertical).view
+    let hhLens = UIView.lens.contentHuggingPriority(for: .horizontal).view
+    let hvLens = UIView.lens.contentHuggingPriority(for: .vertical).view
+    let chLens = UIView.lens.contentCompressionResistancePriority(for: .horizontal).view
+    let cvLens = UIView.lens.contentCompressionResistancePriority(for: .vertical).view
 
     let hhP = self |> hhLens
     let hvP = self |> hvLens

@@ -111,8 +111,8 @@ public final class UIScheduler: Scheduler {
 	}()
 
 	deinit {
-		queueLength.deinitialize()
-		queueLength.deallocate(capacity: 1)
+    queueLength.deinitialize(count:1)
+		queueLength.deallocate()
 	}
 	#endif
 
@@ -326,8 +326,8 @@ public final class QueueScheduler: DateScheduler {
 			flags: DispatchSource.TimerFlags(rawValue: UInt(0)),
 			queue: queue
 		)
-		timer.scheduleRepeating(wallDeadline: wallTime(with: date),
-		                        interval: interval,
+        timer.schedule(wallDeadline: wallTime(with: date),
+                       repeating: interval,
 		                        leeway: leeway)
 		timer.setEventHandler(handler: action)
 		timer.resume()

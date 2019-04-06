@@ -164,10 +164,10 @@ extension TriangularFace3 {
 
     let fs = lines[1...3]
       .map { (line) -> () -> Result<([TriangularFaceVertex3]), ModelError> in
-        { _ in TriangularFaceVertex3.from(line: line).map{[$0]} }
+        {  TriangularFaceVertex3.from(line: line).map{[$0]} }
     }
 
-    let initial: () -> Result<([TriangularFaceVertex3]), ModelError> = {_ in Result(value: [])}
+    let initial: () -> Result<([TriangularFaceVertex3]), ModelError> = { Result(value: [])}
     let chained = fs.reduce(initial, >>>)
 
     return chained().flatMap { (vertices) -> Result<TriangularFace3, ModelError> in
@@ -184,7 +184,7 @@ extension TriangularFace3 {
 fileprivate func >>> <A> (f: @escaping () -> Result<([A]), ModelError>,
           g: @escaping () -> Result<([A]), ModelError>)
   -> () -> Result<([A]), ModelError> {
-    return { _ in
+    return { 
       f().flatMap { (org) -> Result<[A], ModelError> in
         g().map{ org + $0 }
       }

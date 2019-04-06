@@ -7,7 +7,7 @@ public protocol UIScrollViewProtocol: UIViewProtocol {
   var decelerationRate: CGFloat { get set }
   var delaysContentTouches: Bool { get set }
   var keyboardDismissMode: UIScrollViewKeyboardDismissMode { get set }
-  var scrollEnabled: Bool { get set }
+  var isScrollEnabled: Bool { get set }
   var scrollIndicatorInsets: UIEdgeInsets { get set }
   var scrollsToTop: Bool { get set }
   var showsHorizontalScrollIndicator: Bool { get set }
@@ -46,10 +46,10 @@ public extension LensHolder where Object: UIScrollViewProtocol {
     )
   }
 
-  public var scrollEnabled: Lens<Object, Bool> {
+  public var isScrollEnabled: Lens<Object, Bool> {
     return Lens(
-      view: { $0.scrollEnabled },
-      set: { $1.scrollEnabled = $0; return $1 }
+      view: { $0.isScrollEnabled },
+      set: { $1.isScrollEnabled = $0; return $1 }
     )
   }
 

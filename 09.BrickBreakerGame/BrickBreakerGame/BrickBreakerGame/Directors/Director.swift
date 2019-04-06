@@ -1,6 +1,13 @@
 import GLKit
 import AVFoundation
 
+extension CGSize {
+    var ratioW2H: CGFloat {
+        guard height > 0.0 else { return 1 }
+        return width / height
+    }
+}
+
 final class Director {
   internal let glkView: GLKView
   internal var scene: Scene {didSet{ scene.director = self }}

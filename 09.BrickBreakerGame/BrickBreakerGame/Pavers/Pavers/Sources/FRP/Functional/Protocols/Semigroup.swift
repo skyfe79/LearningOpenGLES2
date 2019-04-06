@@ -4,6 +4,12 @@ public protocol Semigroup {
   func op(_ other: Self) -> Self
 }
 
+extension Semigroup {
+  public static func <> (_ lhs: Self, _ rhs: Self) -> Self {
+    return lhs.op(rhs)
+  }
+}
+
 /**
  An infix version of the semigroup operator.
 
@@ -12,7 +18,7 @@ public protocol Semigroup {
 
  - returns: A semigroup value.
  */
-public func >>> <S: Semigroup> (lhs: S, rhs: S) -> S {
+public func <> <S: Semigroup> (lhs: S, rhs: S) -> S {
   return lhs.op(rhs)
 }
 
@@ -24,8 +30,8 @@ public func >>> <S: Semigroup> (lhs: S, rhs: S) -> S {
 
  - returns: A semigroup transformation.
  */
-public prefix func >>> <S: Semigroup> (b: S) -> ((S) -> S) {
-  return { $0 >>> b }
+public prefix func <> <S: Semigroup> (b: S) -> ((S) -> S) {
+  return { $0 <> b }
 }
 
 /**
@@ -36,12 +42,6 @@ public prefix func >>> <S: Semigroup> (b: S) -> ((S) -> S) {
 
  - returns: A semigroup transformation.
  */
-public postfix func >>> <S: Semigroup> (a: S) -> ((S) -> S) {
-  return { a >>> $0 }
+public postfix func <> <S: Semigroup> (a: S) -> ((S) -> S) {
+  return { a <> $0 }
 }
-
-
-
-
-
-

@@ -42,18 +42,18 @@ extension NSLayoutConstraint {
 
 }
 
-extension NSLayoutConstraint {
-  public var fisrtView: ViewClass {
-    return self.firstItem as! ViewClass
-  }
-  public var secondView: ViewClass? {
-    return self.secondItem.flatMap { $0 as? ViewClass }
-  }
-
-  public var isUnary: Bool {
-    return self.secondItem == nil
-  }
-}
+//extension NSLayoutConstraint {
+//  public var fisrtView: ViewClass {
+//    return self.firstItem as! ViewClass
+//  }
+//  public var secondView: ViewClass? {
+//    return self.secondItem.flatMap { $0 as? ViewClass }
+//  }
+//
+//  public var isUnary: Bool {
+//    return self.secondItem == nil
+//  }
+//}
 
 extension NSLayoutConstraint {
   public func remove() {

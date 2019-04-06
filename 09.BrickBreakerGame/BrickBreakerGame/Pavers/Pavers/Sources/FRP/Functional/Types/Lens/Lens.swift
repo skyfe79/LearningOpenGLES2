@@ -141,5 +141,5 @@ public func %~~ <Whole, Part> (lens: Lens<Whole, Part>,
  - returns: A function that transform a whole into a new whole with its part concatenated to `a`.
  */
 public func <>~ <Whole, Part: Semigroup> (lens: Lens<Whole, Part>, a: Part) -> ((Whole) -> Whole) {
-  return lens.over(>>>a)
+  return lens.over(<>a)
 }

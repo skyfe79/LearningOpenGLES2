@@ -8,6 +8,8 @@ public extension Array where Element: OptionalType {
   }
 }
 
+
+
 public extension Array where Element: Semigroup {
   /**
    Combines all elements of the array with the semigroup operation.
@@ -17,7 +19,13 @@ public extension Array where Element: Semigroup {
    - returns: The concatenation of all the values.
    */
   public func sconcat(_ initial: Element) -> Element {
-    return self.reduce(initial, >>>)
+    return self.reduce(initial, <>)
+  }
+}
+
+public extension Array where Element: Monoid {
+  public func sconcat() -> Element {
+    return self.reduce(Element.identity(), <>)
   }
 }
 
@@ -102,6 +110,12 @@ extension Array: Semigroup {
   }
 }
 
+extension Array: Monoid {
+  public static func identity () -> Array {
+    return []
+  }
+}
+
 extension Array where Element: EitherType {
 
   /**
@@ -122,3 +136,14 @@ extension Array where Element: EitherType {
     return PaversFRP.rights(self)
   }
 }
+
+extension Collection where Element == Bool {
+  public func all () -> Bool {
+    return self.reduce(true) {$0 && $1}
+  }
+  
+  public func some () -> Bool {
+    return self.reduce(false) {$0 || $1}
+  }
+}
+

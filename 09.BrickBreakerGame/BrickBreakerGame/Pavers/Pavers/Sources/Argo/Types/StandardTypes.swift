@@ -14,6 +14,8 @@ extension String: Decodable {
   public static func decode(_ json: JSON) -> Decoded<String> {
     switch json {
     case let .string(s): return pure(s)
+    case let .number(n): return pure("\(n)")
+    case let .bool(b): return pure("\(b)")
     default: return .typeMismatch(expected: "String", actual: json)
     }
   }
@@ -33,6 +35,9 @@ extension Int: Decodable {
   public static func decode(_ json: JSON) -> Decoded<Int> {
     switch json {
     case let .number(n): return pure(n.intValue)
+    case let .string(s):
+      guard let n = Int(s) else {fallthrough}
+      return pure(n)
     default: return .typeMismatch(expected: "Int", actual: json)
     }
   }
@@ -52,6 +57,9 @@ extension UInt: Decodable {
   public static func decode(_ json: JSON) -> Decoded<UInt> {
     switch json {
     case let .number(n): return pure(n.uintValue)
+    case let .string(s):
+      guard let n = UInt(s) else { fallthrough }
+      return pure(n)
     default: return .typeMismatch(expected: "UInt", actual: json)
     }
   }
@@ -117,6 +125,9 @@ extension Double: Decodable {
   public static func decode(_ json: JSON) -> Decoded<Double> {
     switch json {
     case let .number(n): return pure(n.doubleValue)
+    case let .string(s):
+      guard let i = Double(s) else { fallthrough }
+      return pure(i)
     default: return .typeMismatch(expected: "Double", actual: json)
     }
   }
@@ -136,6 +147,9 @@ extension Float: Decodable {
   public static func decode(_ json: JSON) -> Decoded<Float> {
     switch json {
     case let .number(n): return pure(n.floatValue)
+    case let .string(s):
+      guard let i = Float(s) else { fallthrough }
+      return pure(i)
     default: return .typeMismatch(expected: "Float", actual: json)
     }
   }
@@ -156,6 +170,13 @@ extension Bool: Decodable {
     switch json {
     case let .bool(n): return pure(n)
     case let .number(n): return pure(n.boolValue)
+    case let .string(s):
+      switch s.uppercased() {
+      case "FALSE", "0": return pure(false)
+      case "TRUE", "1": return pure(true)
+      default: break
+      }
+      fallthrough
     default: return .typeMismatch(expected: "Bool", actual: json)
     }
   }

@@ -19,7 +19,7 @@ public extension Dictionary {
   /**
    Merges `self` with `other`, but all values from `other` trump the values in `self`.
 
-   - parameter other: Another dictionary.
+   - parameter other: Anotheri dictionary.
 
    - returns: A merged dictionary.
    */
@@ -67,6 +67,6 @@ extension Dictionary where Key: Semigroup {
    - returns: A new dictionary.
    */
   public func prefixedKeys(_ prefix: Key) -> Dictionary {
-    return transformedKeys(prefix>>>)
+    return transformedKeys(prefix<>)
   }
 }

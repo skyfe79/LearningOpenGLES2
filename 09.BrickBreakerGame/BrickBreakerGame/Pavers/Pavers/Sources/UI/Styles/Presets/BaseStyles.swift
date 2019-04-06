@@ -73,10 +73,10 @@ public let containerViewBackgroundStyle =
   UIView.lens.backgroundColor .~ .ksr_grey_100
 
 public func dropShadowStyle <V: UIViewProtocol> (radius: CGFloat = 2.0,
-                                                 offset: CGSize = .init(0, 1))
+                                                 offset: CGSize = .init(0, 3))
   -> ((V) -> V) {
   return
-    V.lens.layer.shadowColor .~ UIColor.ksr_dropShadow.cgColor
+    V.lens.layer.shadowColor .~ UIColor.ksr_shadow.cgColor
       >>> V.lens.layer.shadowOpacity .~ 1
       >>> V.lens.layer.shadowRadius .~ radius
       >>> V.lens.layer.masksToBounds .~ false
@@ -124,16 +124,16 @@ private let navBarLens: Lens<UINavigationController?, UINavigationBar?> = Lens(
 
 private let baseNavigationBarStyle =
   UINavigationBar.lens.titleTextAttributes .~ [
-    NSForegroundColorAttributeName: UIColor.black,
-    NSFontAttributeName: UIFont.ksr_callout()
+    NSAttributedStringKey.foregroundColor: UIColor.black,
+    NSAttributedStringKey.font: UIFont.ksr_callout()
     ]
-    >>> UINavigationBar.lens.translucent .~ false
+    >>> UINavigationBar.lens.isTranslucent .~ false
     >>> UINavigationBar.lens.barTintColor .~ .white
 
 private let clearNavigationBarStyle =
   UINavigationBar.lens.titleTextAttributes .~ [
-    NSForegroundColorAttributeName: UIColor.white,
-    NSFontAttributeName: UIFont.ksr_callout()
+    NSAttributedStringKey.foregroundColor: UIColor.white,
+    NSAttributedStringKey.font: UIFont.ksr_callout()
     ]
-    >>> UINavigationBar.lens.translucent .~ true
+    >>> UINavigationBar.lens.isTranslucent .~ true
     >>> UINavigationBar.lens.shadowImage .~ UIImage()

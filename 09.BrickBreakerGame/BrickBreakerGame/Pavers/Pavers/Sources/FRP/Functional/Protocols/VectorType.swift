@@ -51,6 +51,10 @@ public func + <V: VectorType> (v: V, w: V) -> V {
   return v.add(w)
 }
 
+public func - <V: VectorType> (v: V, w: V) -> V {
+  return v.subtract(w)
+}
+
 extension Double : VectorType {
   public typealias Scalar = Double
 

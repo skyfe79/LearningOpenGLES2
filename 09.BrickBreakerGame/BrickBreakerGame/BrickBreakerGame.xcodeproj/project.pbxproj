@@ -56,26 +56,12 @@
 			remoteGlobalIDString = 0E5151C91F4AD7280006BE05;
 			remoteInfo = PaversUI;
 		};
-		0E1CB20A1F66B4B5005783DA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E5151D11F4AD7280006BE05;
-			remoteInfo = PaversUITests;
-		};
 		0E1CB20C1F66B4B5005783DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0E1D070B1F4C71A900D9CB38;
 			remoteInfo = PaversFRP;
-		};
-		0E1CB20E1F66B4B5005783DA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E1D07131F4C71AA00D9CB38;
-			remoteInfo = PaversFRPTests;
 		};
 		0E1CB2101F66B4B5005783DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -84,19 +70,54 @@
 			remoteGlobalIDString = 0E3D75911F4DC5E600FFD6C3;
 			remoteInfo = PaversArgo;
 		};
-		0E1CB2121F66B4B5005783DA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E3D75991F4DC5E700FFD6C3;
-			remoteInfo = PaversArgoTests;
-		};
 		0E1CB2161F66B4C3005783DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 0E1D070A1F4C71A900D9CB38;
 			remoteInfo = PaversFRP;
+		};
+		4EE00C14225906DD00B0ED57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53E932671FE223F80049B8AD;
+			remoteInfo = PaversObjc;
+		};
+		4EE00C16225906DD00B0ED57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53FE25A91FF4B5CF00B6CDE1;
+			remoteInfo = PaversCrypto;
+		};
+		4EE00C18225906DD00B0ED57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53C1DC2220E388F700E8F0F0;
+			remoteInfo = ParsecMock;
+		};
+		4EE00C1A225906DD00B0ED57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53C1DC2A20E388F700E8F0F0;
+			remoteInfo = ParsecMockTests;
+		};
+		4EE00C1C225906DD00B0ED57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53E28EDF20FF391100146643;
+			remoteInfo = ParsecKaleidoscope;
+		};
+		4EE00C1E225906DD00B0ED57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E1CB1FF1F66B4B4005783DA /* Pavers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53E28EE720FF391100146643;
+			remoteInfo = ParsecKaleidoscopeTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -426,12 +447,15 @@
 		0E1CB2001F66B4B4005783DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E1CB2091F66B4B5005783DA /* PaversUI.framework */,
-				0E1CB20B1F66B4B5005783DA /* PaversUITests.xctest */,
 				0E1CB20D1F66B4B5005783DA /* PaversFRP.framework */,
-				0E1CB20F1F66B4B5005783DA /* PaversFRPTests.xctest */,
 				0E1CB2111F66B4B5005783DA /* PaversArgo.framework */,
-				0E1CB2131F66B4B5005783DA /* PaversArgoTests.xctest */,
+				0E1CB2091F66B4B5005783DA /* PaversUI.framework */,
+				4EE00C15225906DD00B0ED57 /* PaversObjc.framework */,
+				4EE00C17225906DD00B0ED57 /* PaversCrypto.framework */,
+				4EE00C19225906DD00B0ED57 /* ParsecMock.framework */,
+				4EE00C1B225906DD00B0ED57 /* ParsecMockTests.xctest */,
+				4EE00C1D225906DD00B0ED57 /* ParsecKaleidoscope.framework */,
+				4EE00C1F225906DD00B0ED57 /* ParsecKaleidoscopeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -480,6 +504,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -507,25 +532,11 @@
 			remoteRef = 0E1CB2081F66B4B5005783DA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0E1CB20B1F66B4B5005783DA /* PaversUITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PaversUITests.xctest;
-			remoteRef = 0E1CB20A1F66B4B5005783DA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		0E1CB20D1F66B4B5005783DA /* PaversFRP.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = PaversFRP.framework;
 			remoteRef = 0E1CB20C1F66B4B5005783DA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E1CB20F1F66B4B5005783DA /* PaversFRPTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PaversFRPTests.xctest;
-			remoteRef = 0E1CB20E1F66B4B5005783DA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0E1CB2111F66B4B5005783DA /* PaversArgo.framework */ = {
@@ -535,11 +546,46 @@
 			remoteRef = 0E1CB2101F66B4B5005783DA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0E1CB2131F66B4B5005783DA /* PaversArgoTests.xctest */ = {
+		4EE00C15225906DD00B0ED57 /* PaversObjc.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PaversObjc.framework;
+			remoteRef = 4EE00C14225906DD00B0ED57 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4EE00C17225906DD00B0ED57 /* PaversCrypto.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PaversCrypto.framework;
+			remoteRef = 4EE00C16225906DD00B0ED57 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4EE00C19225906DD00B0ED57 /* ParsecMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ParsecMock.framework;
+			remoteRef = 4EE00C18225906DD00B0ED57 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4EE00C1B225906DD00B0ED57 /* ParsecMockTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = PaversArgoTests.xctest;
-			remoteRef = 0E1CB2121F66B4B5005783DA /* PBXContainerItemProxy */;
+			path = ParsecMockTests.xctest;
+			remoteRef = 4EE00C1A225906DD00B0ED57 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4EE00C1D225906DD00B0ED57 /* ParsecKaleidoscope.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ParsecKaleidoscope.framework;
+			remoteRef = 4EE00C1C225906DD00B0ED57 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4EE00C1F225906DD00B0ED57 /* ParsecKaleidoscopeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ParsecKaleidoscopeTests.xctest;
+			remoteRef = 4EE00C1E225906DD00B0ED57 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -668,6 +714,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -710,6 +757,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -724,7 +772,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.BrickBreakerGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -738,7 +786,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.BrickBreakerGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -761,6 +809,7 @@
 				0E1CB1A01F66B453005783DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

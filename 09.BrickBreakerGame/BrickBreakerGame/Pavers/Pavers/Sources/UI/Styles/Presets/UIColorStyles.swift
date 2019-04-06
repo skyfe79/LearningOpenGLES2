@@ -113,6 +113,10 @@ extension UIColor {
   public static var ksr_blue_600: UIColor {
     return .hex(0x1561CB)
   }
+  
+  public static var ksr_shadow: UIColor{
+    return .hex(0x797979)
+  }
 
   /// 0xD6D6D6
   public static var ksr_dropShadow: UIColor {
@@ -284,6 +288,11 @@ extension UIColor {
     return .hex(0xEF0707)
   }
 
+  // 0xD64300
+  public static var ksr_orange_red_100: UIColor {
+    return .hex(0xD64300)
+  }
+  
   /// 0xD9E8E3
   public static var ksr_sandToSageGradientEnd: UIColor {
     return .hex(0xD9E8E3)

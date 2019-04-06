@@ -19,8 +19,8 @@ public protocol BindingSource: SignalProducerConvertible {
 	// All requirements are replicated to workaround the type checker issue.
 	// https://bugs.swift.org/browse/SR-5090
 
-	associatedtype Value
-	associatedtype Error
+  associatedtype Value
+  associatedtype Error
 
 	var producer: SignalProducer<Value, Error> { get }
 }

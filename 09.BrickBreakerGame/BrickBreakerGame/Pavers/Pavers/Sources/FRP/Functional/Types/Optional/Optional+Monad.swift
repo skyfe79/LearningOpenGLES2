@@ -45,7 +45,7 @@ public func -<< <T, U>(f: (T) -> U?, a: T?) -> U? {
 
   - returns: A function from type `T` to type `Optional<V>`
 */
-public func >>> <T, U, V>(f: @escaping (T) -> U?, g: @escaping (U) -> V?) -> (T) -> V? {
+public func >-> <T, U, V>(f: @escaping (T) -> U?, g: @escaping (U) -> V?) -> (T) -> V? {
   return { x in f(x) >>- g }
 }
 
@@ -62,6 +62,6 @@ public func >>> <T, U, V>(f: @escaping (T) -> U?, g: @escaping (U) -> V?) -> (T)
 
   - returns: A function from type `T` to type `Optional<V>`
 */
-public func <<< <T, U, V>(f: @escaping (U) -> V?, g: @escaping (T) -> U?) -> (T) -> V? {
-  return g >>> f
+public func <-< <T, U, V>(f: @escaping (U) -> V?, g: @escaping (T) -> U?) -> (T) -> V? {
+  return g >-> f
 }

@@ -1,4 +1,5 @@
 import PaversFRP
+import Foundation
 
 internal class DelegateProxy<Delegate: NSObjectProtocol>: NSObject {
 	internal weak var forwardee: Delegate? {
@@ -69,7 +70,7 @@ extension DelegateProxy {
 				return proxy
 			}
 
-			let superclass: AnyClass = class_getSuperclass(swizzleClass(instance))
+			let superclass: AnyClass = class_getSuperclass(swizzleClass(instance))!
 
 			let invokeSuperSetter: @convention(c) (NSObject, AnyClass, Selector, AnyObject?) -> Void = { object, superclass, selector, delegate in
 				typealias Setter = @convention(c) (NSObject, Selector, AnyObject?) -> Void
@@ -98,7 +99,7 @@ extension DelegateProxy {
 			}
 
 			typealias Getter = @convention(c) (NSObject, Selector) -> AnyObject?
-			let getterImpl: IMP = class_getMethodImplementation(object_getClass(instance), getter)
+			let getterImpl: IMP = class_getMethodImplementation(object_getClass(instance), getter)!
 			let original = unsafeBitCast(getterImpl, to: Getter.self)(instance, getter) as! Delegate?
 
 			// `proxy.forwardee` would invoke the original setter regardless of

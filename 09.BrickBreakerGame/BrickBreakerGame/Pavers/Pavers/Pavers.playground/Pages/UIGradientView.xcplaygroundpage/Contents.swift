@@ -1,6 +1,6 @@
 //: Playground - noun: a place where people can play
 
-import Pavers
+import PaversFRP
 import PaversUI
 import UIKit
 import PlaygroundSupport

@@ -11,6 +11,8 @@ fileprivate let signatureCacheKey = AssociationKey<SignatureCache>()
 /// Holds the method selector cache of the runtime subclass.
 fileprivate let selectorCacheKey = AssociationKey<SelectorCache>()
 
+internal let noImplementation: IMP = unsafeBitCast(Int(0), to: IMP.self)
+
 extension Reactive where Base: NSObject {
 	/// Create a signal which sends a `next` event at the end of every 
 	/// invocation of `selector` on the object.
@@ -76,7 +78,7 @@ extension NSObject {
 			let subclassAssociations = Associations(subclass as AnyObject)
 
 			// FIXME: Compiler asks to handle a mysterious throw.
-			try! PaversUI.synchronized(subclass) {
+			PaversUI.synchronized(subclass) {
 				let isSwizzled = subclassAssociations.value(forKey: interceptedKey)
 
 				let signatureCache: SignatureCache
@@ -138,7 +140,7 @@ extension NSObject {
 /// - parameters:
 ///   - realClass: The runtime subclass to be swizzled.
 private func enableMessageForwarding(_ realClass: AnyClass, _ selectorCache: SelectorCache) {
-	let perceivedClass: AnyClass = class_getSuperclass(realClass)
+	let perceivedClass: AnyClass = class_getSuperclass(realClass)!
 
 	typealias ForwardInvocationImpl = @convention(block) (Unmanaged<NSObject>, AnyObject) -> Void
 	let newForwardInvocation: ForwardInvocationImpl = { objectRef, invocation in
@@ -166,7 +168,7 @@ private func enableMessageForwarding(_ realClass: AnyClass, _ selectorCache: Sel
 			//
 			// However, the IMP cache would be thrashed due to the swapping.
 
-			let topLevelClass: AnyClass = object_getClass(objectRef.takeUnretainedValue())
+			let topLevelClass: AnyClass = object_getClass(objectRef.takeUnretainedValue())!
 
 			// The locking below prevents RAC swizzling attempts from intervening the
 			// invocation.
@@ -178,12 +180,12 @@ private func enableMessageForwarding(_ realClass: AnyClass, _ selectorCache: Sel
 
 			synchronized(topLevelClass) {
 				func swizzle() {
-					let interopImpl = class_getMethodImplementation(topLevelClass, interopAlias)
+					let interopImpl = class_getMethodImplementation(topLevelClass, interopAlias)!
 
 					let previousImpl = class_replaceMethod(topLevelClass, selector, interopImpl, typeEncoding)
 					invocation.invoke()
 
-					_ = class_replaceMethod(topLevelClass, selector, previousImpl, typeEncoding)
+					_ = class_replaceMethod(topLevelClass, selector, previousImpl ?? noImplementation, typeEncoding)
 				}
 
 				if topLevelClass != realClass {
@@ -191,7 +193,7 @@ private func enableMessageForwarding(_ realClass: AnyClass, _ selectorCache: Sel
 						// In addition to swapping in the implementation, the message
 						// forwarding needs to be temporarily disabled to prevent circular
 						// invocation.
-						_ = class_replaceMethod(realClass, selector, nil, typeEncoding)
+						_ = class_replaceMethod(realClass, selector, noImplementation, typeEncoding)
 						swizzle()
 						_ = class_replaceMethod(realClass, selector, _rac_objc_msgForward, typeEncoding)
 					}
@@ -203,7 +205,8 @@ private func enableMessageForwarding(_ realClass: AnyClass, _ selectorCache: Sel
 			return
 		}
 
-		if let impl = method_getImplementation(method), impl != _rac_objc_msgForward {
+		let impl = method_getImplementation(method)
+		if impl != _rac_objc_msgForward {
 			// The perceived class, or its ancestors, responds to the selector.
 			//
 			// The implementation is invoked through the selector alias, which
@@ -226,8 +229,8 @@ private func enableMessageForwarding(_ realClass: AnyClass, _ selectorCache: Sel
 		// inheritance hierarchy, or the default handler returned by the runtime
 		// if it finds no implementation.
 		typealias SuperForwardInvocation = @convention(c) (Unmanaged<NSObject>, Selector, AnyObject) -> Void
-		let impl = class_getMethodImplementation(perceivedClass, ObjCSelector.forwardInvocation)
-		let forwardInvocation = unsafeBitCast(impl, to: SuperForwardInvocation.self)
+		let forwardInvocationImpl = class_getMethodImplementation(perceivedClass, ObjCSelector.forwardInvocation)
+		let forwardInvocation = unsafeBitCast(forwardInvocationImpl, to: SuperForwardInvocation.self)
 		forwardInvocation(objectRef, ObjCSelector.forwardInvocation, invocation)
 	}
 
@@ -244,7 +247,7 @@ private func enableMessageForwarding(_ realClass: AnyClass, _ selectorCache: Sel
 ///   - realClass: The runtime subclass to be swizzled.
 ///   - signatureCache: The method signature cache.
 private func setupMethodSignatureCaching(_ realClass: AnyClass, _ signatureCache: SignatureCache) {
-	let perceivedClass: AnyClass = class_getSuperclass(realClass)
+	let perceivedClass: AnyClass = class_getSuperclass(realClass)!
 
 	let newMethodSignatureForSelector: @convention(block) (Unmanaged<NSObject>, Selector) -> AnyObject? = { objectRef, selector in
 		if let signature = signatureCache[selector] {
@@ -394,11 +397,10 @@ private func unpackInvocation(_ invocation: AnyObject) -> [Any?] {
 		let encoding = ObjCTypeEncoding(rawValue: rawEncoding.pointee) ?? .undefined
 
 		func extract<U>(_ type: U.Type) -> U {
-			let pointer = UnsafeMutableRawPointer.allocate(bytes: MemoryLayout<U>.size,
-			                                               alignedTo: MemoryLayout<U>.alignment)
+      let pointer = UnsafeMutableRawPointer.allocate(byteCount: MemoryLayout<U>.size,
+                                                     alignment: MemoryLayout<U>.alignment)
 			defer {
-				pointer.deallocate(bytes: MemoryLayout<U>.size,
-				                   alignedTo: MemoryLayout<U>.alignment)
+				pointer.deallocate()
 			}
 
 			invocation.copy(to: pointer, forArgumentAt: Int(position))
@@ -443,8 +445,8 @@ private func unpackInvocation(_ invocation: AnyObject) -> [Any?] {
 		case .undefined:
 			var size = 0, alignment = 0
 			NSGetSizeAndAlignment(rawEncoding, &size, &alignment)
-			let buffer = UnsafeMutableRawPointer.allocate(bytes: size, alignedTo: alignment)
-			defer { buffer.deallocate(bytes: size, alignedTo: alignment) }
+      let buffer = UnsafeMutableRawPointer.allocate(byteCount: size, alignment: alignment)
+			defer { buffer.deallocate() }
 
 			invocation.copy(to: buffer, forArgumentAt: Int(position))
 			value = NSValue(bytes: buffer, objCType: rawEncoding)

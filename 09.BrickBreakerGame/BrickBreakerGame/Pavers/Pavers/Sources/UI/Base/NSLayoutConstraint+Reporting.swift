@@ -11,35 +11,35 @@ import PaversFRP
 
 
 extension NSLayoutConstraint {
-  public var equation: String {
+//  public var equation: String {
+//
+//    let fstViewName = self.fisrtView.identification
+//    let fstAttr = self.firstAttribute.stringValue
+//    let fstStr = "\(fstViewName).\(fstAttr)"
+//
+//    let relStr = self.relation.stringValue
+//
+//    guard let sndView = self.secondView else { return "\(fstStr) \(relStr) \(self.constant)" }
+//
+//    let sndViewName = sndView.identification
+//    let sndAttr = self.secondAttribute.stringValue
+//    let sndStr = "\(sndViewName).\(sndAttr)"
+//
+//    let rhsVariablePart = self.multiplier == 1
+//      ? sndStr
+//      : "\(sndStr) * \(self.multiplier)"
+//
+//    let constantString = "\((self.constant.sign as NumericSign).symbol) \(self.constant.abs())"
+//
+//    let rhs = self.constant == 0 ? rhsVariablePart : "\(rhsVariablePart) \(constantString)"
+//
+//    return "\(fstStr) \(relStr) \(rhs)"
+//  }
 
-    let fstViewName = self.fisrtView.identification
-    let fstAttr = self.firstAttribute.stringValue
-    let fstStr = "\(fstViewName).\(fstAttr)"
-
-    let relStr = self.relation.stringValue
-
-    guard let sndView = self.secondView else { return "\(fstStr) \(relStr) \(self.constant)" }
-
-    let sndViewName = sndView.identification
-    let sndAttr = self.secondAttribute.stringValue
-    let sndStr = "\(sndViewName).\(sndAttr)"
-
-    let rhsVariablePart = self.multiplier == 1
-      ? sndStr
-      : "\(sndStr) * \(self.multiplier)"
-
-    let constantString = "\((self.constant.sign as NumericSign).symbol) \(self.constant.abs())"
-
-    let rhs = self.constant == 0 ? rhsVariablePart : "\(rhsVariablePart) \(constantString)"
-
-    return "\(fstStr) \(relStr) \(rhs)"
-  }
-
-  open override var description: String {
-    let active = self.isActive ? "Active" : "Inactive"
-    return "<\(self.identification) \(self.equation) (\(active))>"
-  }
+//  open override var description: String {
+//    let active = self.isActive ? "Active" : "Inactive"
+//    return "<\(self.identification) \(self.equation) (\(active))>"
+//  }
 
 }
 

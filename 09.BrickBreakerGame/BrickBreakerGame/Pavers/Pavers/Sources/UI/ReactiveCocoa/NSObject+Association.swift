@@ -1,4 +1,5 @@
 import PaversFRP
+import Foundation
 
 internal struct AssociationKey<Value> {
 	fileprivate let address: UnsafeRawPointer
@@ -127,5 +128,22 @@ extension Associations {
 ///   - key: The key.
 ///   - address: The address of the object.
 internal func unsafeSetAssociatedValue<Value>(_ value: Value?, forKey key: AssociationKey<Value>, forObjectAt address: UnsafeRawPointer) {
-	objc_setAssociatedObject(address, key.address, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+//  let obj = address.bindMemory(to: NSObject.self, capacity: 1)
+//  objc_setAssociatedObject(obj.pointee, key.address, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+  _rac_objc_setAssociatedObject(address, key.address, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

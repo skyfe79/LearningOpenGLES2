@@ -1,3 +1,5 @@
+import CoreGraphics
+
 extension CGFloat : VectorType {
   public typealias Scalar = CGFloat
 
@@ -72,10 +74,3 @@ extension CGVector {
     self.init(dx:dx, dy:dy)
   }
 }
-
-extension CGSize {
-  public var ratioW2H: CGFloat {
-    return self.width / self.height
-  }
-}
-
