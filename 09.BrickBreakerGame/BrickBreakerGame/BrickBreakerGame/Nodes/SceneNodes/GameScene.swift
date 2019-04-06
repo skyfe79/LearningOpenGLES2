@@ -199,7 +199,7 @@ final internal class GameScene: Scene {
     if let destroyedBrick = brickToDestroy {
       self.remove(child: destroyedBrick)
 
-      if let idx = self.bricks.index(where: {$0 === destroyedBrick}) {
+      if let idx = self.bricks.firstIndex(where: {$0 === destroyedBrick}) {
         self.bricks.remove(at: idx)
       }
 

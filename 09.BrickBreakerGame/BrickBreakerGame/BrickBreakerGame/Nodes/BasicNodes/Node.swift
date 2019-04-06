@@ -181,7 +181,7 @@ extension Node {
   }
 
   internal func remove(child: Node) {
-    if let idx = self._children.index(where: {$0 === child}) {
+    if let idx = self._children.firstIndex(where: {$0 === child}) {
       child.parent = nil
       self._children.remove(at: idx)
     }
